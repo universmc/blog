@@ -11,7 +11,7 @@
       "style": "sass --watch src/sass/windows.scss src/css/style1/playeur.css",
       "srv": "node ./srv/srv.js",
       "start": "electron .",
-      "groq": "node groq-min.js",
+      "blog": "node blog_Pibot.js",
       "dev": "sass src/sass/stylus/devops.scss src/css/devOps.css"
     },
     "Mistral": {

@@ -1,6 +1,6 @@
 [       
     {
-    "titre": "Actuality",
+    "titre": "Blog des developpers",
     "sousSections": [
         {
             "sousTitre": "Introduction",
@@ -66,7 +66,7 @@
             ]
             },
     {
-        "titre": "Meteo",
+        "titre": "timeStamps",
         "sousSections": [
             {
                 "sousTitre": "Introduction",

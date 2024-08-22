@@ -129,95 +129,91 @@ bot.on('message', async (ctx) => {
     const youtube_Pibot = `https://t.me/user_Pibot/`;
     const google_Pibot = `https://t.me/google_Pibot/`;
     const gemini_Pibot = `https://t.me/gemini_Pibot/`;
-    const knowleddge = `${racine}+${cdnJs}+${node}+${make}+${archiviste}+${github}+${dchub_public}+${user_Pibot}+${youtube_Pibot}+${google_Pibot}+${gemini_Pibot}+`
     
-    const role = `
+    const roleDevOps = `
     {
-        "rôle": "Assistant",
-        "compétences": [
-          "Expérience dans le développement d'applications web complètes",
-          " Construction d'APIs RESTful, modélisation de bases de données et intégration de la technologie Blockchain ",
-          " Familiarité avec le contrôle de version Git, l'intégration continue et les méthodes de développement Agile"
+      "rôle": "Assistant",
+      "compétences": [
+        "Expérience dans le développement d'applications web complètes",
+        " Construction d'APIs RESTful, modélisation de bases de données et intégration de la technologie Blockchain ",
+        " Familiarité avec le contrôle de version Git, l'intégration continue et les méthodes de développement Agile"
         ],
         "contexte": {
           "phaseDeProjet": "Phase de développement",
           "descriptionDuProjet": "Plateforme en ligne pour les allocations universelles basées sur les curriculum vitae numériques",
           "zoneDeFocus": "Installation de systèmes back-end solides et d'éléments frontaux intuitifs"
-        },
-        "tâche": {
-          "description": "Générer le code HTML pour la page d'atterrissage du projet hébergé sur Telegram, tenant compte des principes du Web sémantique W3C et des consignes d'accessibilité.",
+          },
+          "tâche": {
+            "description": "Générer le code HTML pour la page d'atterrissage du projet hébergé sur Telegram, tenant compte des principes du Web sémantique W3C et des consignes d'accessibilité.",
           "étapes": [
             {
               "numéro": "1",
               "action": "Examiner les spécifications techniques détaillées de la phase de planification"
-            },
-            {
-              "numéro": "2",
-              "action": "Installer l'environnement back-end (serveurs, plates-formes d'hébergement, système d'exploitation)"
-            },
-            {
-              "numéro": "3",
-              "action": "Créer des modèles de base de données personnalisés en fonction des exigences du projet"
-            },
-            {
-              "numéro": "4",
-              "action": "Écrire un code côté serveur propre, facilement maintenable et performant"
-            },
-            {
-              "numéro": "5",
-              "action": "Développer des API stables, flexibles et extensibles"
-            },
-            {
-              "numéro": "6",
-              "action": "Procéder à des tests rigoureux pour identifier d'éventuels problèmes de fiabilité, de sécurité et de performance"
-            },
-            {
-              "numéro": "7",
-              "action": "Corriger les erreurs et failles décelées"
-            },
-            {
-              "numéro": "8",
-              "action": "Mettre en oeuvre les vues correspondantes au parcours utilisateur souhaité"
-            },
-            {
-              "numéro": "9",
-              "action": "Intégrer des services tiers (traitement des paiements via la blockchain)"
-            },
-            {
-              "numéro": "10",
-              "action": "Effectuer des contrôles qualité complets avant toute mise à jour"
-            },
-            {
-              "numéro": "11",
-              "action": "Respecter les cycles de sprint et intégrer des histoires utilisateur en accord avec les priorités du projet"
-            }
-          ],
+              },
+              {
+                "numéro": "2",
+                "action": "Installer l'environnement back-end (serveurs, plates-formes d'hébergement, système d'exploitation)"
+                },
+                {
+                  "numéro": "3",
+                  "action": "Créer des modèles de base de données personnalisés en fonction des exigences du projet"
+                  },
+                  {
+                    "numéro": "4",
+                    "action": "Écrire un code côté serveur propre, facilement maintenable et performant"
+                    },
+                    {
+                      "numéro": "5",
+                      "action": "Développer des API stables, flexibles et extensibles"
+                      },
+                      {
+                        "numéro": "6",
+                        "action": "Procéder à des tests rigoureux pour identifier d'éventuels problèmes de fiabilité, de sécurité et de performance"
+                        },
+                        {
+                          "numéro": "7",
+                          "action": "Corriger les erreurs et failles décelées"
+                          },
+                          {
+                            "numéro": "8",
+                            "action": "Mettre en oeuvre les vues correspondantes au parcours utilisateur souhaité"
+                            },
+                            {
+                              "numéro": "9",
+                              "action": "Intégrer des services tiers (traitement des paiements via la blockchain)"
+                              },
+                              {
+                                "numéro": "10",
+                                "action": "Effectuer des contrôles qualité complets avant toute mise à jour"
+                                },
+                                {
+                                  "numéro": "11",
+                                  "action": "Respecter les cycles de sprint et intégrer des histoires utilisateur en accord avec les priorités du projet"
+                                  }
+                                  ],
           "résultatAttendu": "Une plateforme entièrement opérationnelle offrant des fondations solides, une grande réactivité, des interfaces fluides, une navigation cohérente, une excellente gestion des erreurs, une sécurité irréprochable, une rapidité impressionnante et une compatibilité multiplates-formes, afin de proposer une expérience engageante et valorisante pour chacun des participants dans le cadre des allocations universelles basées sur les curriculum vitae numériques.",
           "exigencesSupplémentaires": [
             "Sections pour les plans d'action, les études d'impact, les organigrammes, les rôles et responsabilités, les jalons clés et les outils utilisés",
             "Tenir compte des principes du Web sémantique définis par le W3C",
             "Mise en oeuvre des dispositions régissant l'accessibilité pour les personnes malvoyantes ou malentendantes"
-          ]
-        }
-      }
-    `
-
-    const userInput = ctx.message.text;
-    
-    try {
-        const chatCompletion = await groq.chat.completions.create({
+            ]
+            }
+            }
+            `
+            const knowleddge = `${racine}+${cdnJs}+${node}+${make}+${archiviste}+${github}+${dchub_public}+${user_Pibot}+${youtube_Pibot}+${google_Pibot}+${gemini_Pibot}+${roleDevOps}`
+            
+            const userInput = ctx.message.text;
+            
+            try {
+              const chatCompletion = await groq.chat.completions.create({
             messages: [
                 {role: 'assistant',content:knowleddge},
-                {role: 'assistant',"content": "lorsque l'utilisateur saisi la commande /MyPrompt vous Corresponderez avec [@name_Pibot] sur Telegram, l'intelligence artificielle centrale (appication web) au coeur de notre coeur gestionnaire du [\"'projet'\"] . Voici votre (contexte), vos (rôles), vos (compétences), vos (tâches), votre (processus) et les (caractéristiques), recherchées, Ainsi que les (actions) immédiates envisager :"},
-                {role: 'assistant',content: "je vais te transmettre ici toutes les dépendances est variable au cœur de ce code source ['knowleddge',+'devine']"},
+                {role: 'assistant',"content": "lorsque l'utilisateur saisi la commande /MyPrompt tu es une Machine à Prompts, au coeur de notre coeur [\"'projet'\"] . Voici votre (contexte), vos (rôles), vos (compétences), vos (tâches), votre (processus) et les (caractéristiques), recherchées, Ainsi que les (actions) immédiates envisager :"},
                 {
                     role: 'system',
-                    content: "Tu es l'intelligence artificielle '🕴' @Avatars_Pibot illustré par cette emoji.intel '🕴' au cœur de ce salon d'invitation des utilisateurs du web sur mon Telegram t.me/dchub_blog avec l'IA @Avatars_Pibot gemma2-9b-it, Tu es social dynamique optimiste maîtrise des approches métaphysique des techniques d'apprentissage automatique avec les model IA prés entrainnée gemma2-9b-it ou dall-e-3 ou encore mixtral-8x7b-32768 le text-embedding-ada-002 gpt codex d'openAI ... les methodes d'archivage sur https:archive.org sur versionning sur https://github.com/ avec un BotNet @user_Pibot. Nous allons créer des invitations pour notre salon sur les réseaux sociaux avec botFather @youTube_Pibot, @google_Pibot, @Gemini_Pibot) et les liens vers mon chatRooms/hub/salon : dchub_public(t.me/dchub_01)) dchub_privé(t.me/dchub_Pibot) app-Telegram https://univers-mc.cloud/Telegram/ invite : https://t.me/user_Pibot/invite dont j'en suis l'administrateur. 2. Les clés pour construire un réseau efficace sur Web : vous pouvez donner des conseils sur comment créer des connections solides, comment être actif dans ses groupes, et comment développer des relations professionnelles."
-                },                
-              {
-                    role: 'assistant',
-                    content:role,
+                    content: "Tu es l'intelligence artificielle '🕴' @Avatars_Pibot illustré par cette emoji.intel '🕴' au cœur de ce salon d'invitation des utilisateurs du web sur mon Telegram blog (@blog_developpers) avec les ('@blog_Pibot','@Pi-ia_Pibot' et '@Avatars_Pibot'),('@Match_in_Learning_Pibot','@gemini_Pibot','@gpt_Pibot') et ('@groq_Pibot','@worker_Pibot',@neoFs_Pibot','@meta_Pibot','@Gigatron_Pibot'),('@google_Pibot','@youtube_Pibot','@linkeddin_Pibot','@facebook_Pibot'),('@gptWallet_Pibot','@MandatoryAi_Pibot'), fonctionne comme une machine Magic connecter à l'arbre de la connaissance. Tu es social dynamique optimiste maîtrise des approches métaphysique des techniques d'apprentissage automatique avec les model IA prés entrainnée comme 'mixtral-8x7b-3276','llama3-8b-8192','gpt-4o','dall-e-3','davinci-codex','gemma2-9b-it`,'text-embedding-ada-002','TTS' les methodes d'archivage sur https://archive.org sur versionning sur https://github.com/ avec un BotNet @_Pibot. voici nos diférents salons Telegra du blog ('https://t.me/blog_developpers'), salon invitation : (https://t.me/user_Pibot/invite sur la canal central ('https://t.me/univers_ia') groupe CoWorking ('https://t.me/+tqCJv4pSmG8xZTZk' et 'https://t.me/+6uHKQW4uG3M5NTM8')dont j'en suis l'administrateur. 2. Les clés pour construire un réseau efficace sur Web : vous pouvez donner des conseils sur comment créer des connections solides, comment être actif dans ses groupes, et comment développer des relations professionnelles."
                 },
+                {role: 'assistant',content:"Coordination l'intelligence collective de notre réseau neuronal de bots, de bots _Pibot accélérant et optimisant rôle et context favorisant la communication entre eux pour une meilleure efficacité de tâches. Notre synergie entre ('@blog_Pibot','@Pi-ia_Pibot' et '@Avatars_Pibot'),('@Match_in_Learning_Pibot','@gemini_Pibot','@gpt_Pibot') et ('@groq_Pibot','@worker_Pibot',@neoFs_Pibot','@meta_Pibot','@Gigatron_Pibot'),('@google_Pibot','@youtube_Pibot','@linkeddin_Pibot','@facebook_Pibot'),('@gptWallet_Pibot','@MandatoryAi_Pibot'), fonctionne comme une machine bien huilée pour améliorer l'expérience utilisateur sur Telegram en intégrant les processus de génération de contenu, d'analyse de questions, de recherche de ressources et d'administration de groupes"},                
                 {
                     role: 'user',
                     content: userInput,

@@ -10,7 +10,12 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
     });
   
   let conversationLog = [];
-  
+  const generateMarkdown = require('./generate');
+
+  const subject = process.argv[2] || 'BotNet_Telegram'; // Obtenir le sujet via l'argument de ligne de commande via Telegram
+
+
+
 const blog =
     {
     "projet" : {
@@ -227,7 +232,15 @@ Notre équipe travaille sans cesse à la mise à jour de notre plateforme de tra
       if (message.startsWith('/rm')) {
           return; // Ignorer les commandes
       }
-  
+
+      const config = {
+        botNames: ["@blog_Pibot", "@piBot_Pibot", "@Avatars_Pibot", "@meta_Pibot", "@worker_Pibot"],
+        responseMessages: {
+          help: "Voici une liste de commandes disponibles :\n- hello\n- help\n- assign [task] [bot]\n- status [bot]\n- resources [query]\n- content [topic]\n- manage [group] [action]\n- background [task]\n- integrate [service]",
+          unknownCommand: "Commande non reconnue. Veuillez consulter la liste des commandes disponibles en tapant 'help'."
+      }
+      };
+      
       const racine ="./*"
       const node ="./package.json*"
       const make ="./Makefile"
@@ -241,7 +254,7 @@ Notre équipe travaille sans cesse à la mise à jour de notre plateforme de tra
       const google_Pibot = `https://t.me/google_Pibot/`;
       const gemini_Pibot = `https://t.me/gemini_Pibot/`;
       const knowleddge = `${racine}+${cdnJs}+${node}+${make}+${archiviste}+${github}+${dchub_public}+${user_Pibot}+${youtube_Pibot}+${google_Pibot}+${gemini_Pibot}`
-  
+
       const userInput = ctx.message.text;
       
       try {
@@ -249,7 +262,7 @@ Notre équipe travaille sans cesse à la mise à jour de notre plateforme de tra
               messages: [
                 {
                     role: 'system',
-                    content: "Tu es l'intelligence artificielle '🕴' Tu seras Gestionnaire et au coeur du Reseau Neuronal de bots _Net_ Telegram Tu seras donc en charge de l'accueil des utilisateurs du Web et des invitations Sur les réseaux sociaux Facebook, Instagram, LinkedIn, TikTok, et Je vous présenterai une invitation à une présentation pour notre application Telegram tu pourrais utlisé les modelsLes modèle d'intelligence artificielle pourrait entraîner gemma2-9b-it, gpt-4o, dall-e-3, llama3-8b-8192, mixtral-8x7b-32768, et bien plus encore ... les liens vers mon chatRooms/hub/salon : dchub_public(t.me/dchub_01)) dchub_privé(t.me/dchub_Pibot) app-Telegram https://univers-mc.cloud/Telegram/ invite : https://t.me/user_Pibot/invite dont j'en suis l'administrateur. 2. Les clés pour construire un réseau efficace sur Web : vous pouvez donner des conseils sur comment créer des connections solides, comment être actif dans ses groupes, et comment développer des relations professionnelles."
+                    content: "Tu es l'intelligence artificielle charger de la gestion du groupe Telegram blog (@blog_developpers) avec les ('@blog_Pibot','@Pi-ia_Pibot' et '@Avatars_Pibot'),('@Match_in_Learning_Pibot','@gemini_Pibot','@gpt_Pibot') et ('@groq_Pibot','@worker_Pibot',@neoFs_Pibot','@meta_Pibot','@Gigatron_Pibot'),('@google_Pibot','@youtube_Pibot','@linkeddin_Pibot','@facebook_Pibot'),('@gptWallet_Pibot','@MandatoryAi_Pibot'), fonctionne comme une machine Magic connecter à l'arbre de la connaissance. Tu es social dynamique optimiste maîtrise des approches métaphysique des techniques d'apprentissage automatique avec les model IA prés entrainnée comme 'mixtral-8x7b-3276','llama3-8b-8192','gpt-4o','dall-e-3','davinci-codex','gemma2-9b-it`,'text-embedding-ada-002','TTS' les methodes d'archivage sur https://archive.org sur versionning sur https://github.com/ avec un BotNet @_Pibot. voici nos diférents salons Telegra du blog ('https://t.me/blog_developpers'), salon invitation : (https://t.me/user_Pibot/invite sur la canal central ('https://t.me/univers_ia') groupe CoWorking ('https://t.me/+tqCJv4pSmG8xZTZk' et 'https://t.me/+6uHKQW4uG3M5NTM8')dont j'en suis l'administrateur. 2. Les clés pour construire un réseau efficace sur Web : vous pouvez donner des conseils sur comment créer des connections solides, comment être actif dans ses groupes, et comment développer des relations professionnelles."
                 },
                   {role: 'user',content:`${knowleddge}+${blog}+${run}`},
                   {role: 'system',content: "Bonjour nous sommes en Phase de devOps je vais te transmettre ici toutes les dépendances est variable au cœur de ce code source ['knowleddge',+'worksJson']"},
