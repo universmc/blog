@@ -66,7 +66,7 @@
         "description": ["Interaction avec le public et analyse des performances"],
         "roles": ["Community Manager", "Analystes des Médias Sociaux"],
         "duration": 1,
-                "dependencies": [],
+        "dependencies": [],
         "startDate": "2023-05-01",
         "endDate": "2023-05-01",
         "resources": []
@@ -76,7 +76,7 @@
         "description": ["Gestion des campagnes publicitaires ciblées"],
         "roles": ["Responsable du Marketing", "Spécialiste de la Publicité"],
         "duration": 1,
-                "dependencies": [],
+        "dependencies": [],
         "startDate": "2023-05-01",
         "endDate": "2023-05-01",
         "resources": []
@@ -97,7 +97,7 @@
         "description": ["Création de supports de promotion pour les réseaux"],
         "roles": ["Graphiste", "Community Manager"],
         "duration": 1,
-                "dependencies": [],
+        "dependencies": [],
         "startDate": "2023-05-01",
         "endDate": "2023-05-01",
         "resources": []
