@@ -78,6 +78,10 @@ update:
 	@git push
 	@echo "✨ Mise à jour terminée✨"
 
+php1:
+	@echo ✨ Initialisation du serveur php ✨"
+	@php -S localhost 5080
+	
 commande10:
 	@echo "${COMMANDE10_MSG}"
 
