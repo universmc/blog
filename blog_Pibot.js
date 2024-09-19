@@ -10,7 +10,7 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
     });
   
   let conversationLog = [];
-  const generateMarkdown = require('./generate');
+  const generateMarkdown = require('./Archiviste/20240917/generate');
 
   const subject = process.argv[2] || 'BotNet_Telegram'; // Obtenir le sujet via l'argument de ligne de commande via Telegram
 

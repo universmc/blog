@@ -5,6 +5,7 @@
     "main": "main.js",
     "scripts": {
         "dev": "next dev",
+        "style": "sass --watch src/scss/style.scss src/css/style.css",
         "start": "electron .",
         "build": "next build",
         "Next": "next start",
