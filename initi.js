@@ -18,8 +18,11 @@ const borderChars = {
   intersectionCross: '╬',
 };
 
+const racine = "./"
+const Theme = "WorldTheme"
 
 const code_source = `https://github.com/universmc/blog.gi`;
+const blog = `https://wp.univers-mc.cloud`;
 
 // Function to display the project plan in a structured format
 function displayProjectPlan(plan) {
@@ -34,7 +37,7 @@ function displayProjectPlan(plan) {
 async function main() {
 
   // Contenus pour les différents rôles dans le dialogue
-  const role = `
+  const roleProgrammeur = `
   ## Contexte : 
   En tant qu'assistant de développement web, je travaille sur le "blog de de developpeurs" utilisant le framework Bootstrap 5. Le projet gestion au dashboard du blog UX https://wp.univers-mc.cloud de technologie de pointe.
   
@@ -86,13 +89,14 @@ async function main() {
   - Générer le code HTML, CSS, JS, et SCSS en fonction des exigences
   
   ## Résultat/Feedback Attendu :
-  - Une page web d'accueil pour une entreprise de technologie de pointe, conçue avec le framework Bootstrap 5, qui respecte les normes du web sémantique W3C.
+  - Gestion de programmation de la feuille de style pour le thème WordPress XorldTheme
+  - Une page web d'accueil pour une entreprise de technologie de pointe, conçue avec les framework groq-sdk, nextJs, reactJs, threeJs, tensorflow Bootstrap 5, qui respecte les normes du web sémantique W3C.
   - Une expérience utilisateur fluide et interactive, avec des fonctionnalités JavaScript pour améliorer l'expérience utilisateur.
   - Un code propre et bien documenté, qui peut être facilement maintenu et mis à jour.`
   
   // Project plan object
   const ProjectPlan = {
-    projectName: "Développement d'une application de gestion et de generation de composant Bootstrap pour la plate-forme UMC (univers-mc.cloud),",
+    projectName: "Développement d'une application Électrons comme un pays, il reste de gestion pour le bloc des développeurs WorldPress à cette adresse (wp.univers-mc.cloud),",
     phases: [
       { 
         phaseId:"phase0",  
@@ -123,7 +127,9 @@ async function main() {
         {role: "system", content: `${role}` },
         {role: "user", content: "Initilisation du 'blog du des developpeurs'" },
         {role: "system", content: "nous sommes en phase de développement du thème WordPress en CSS wp.univers-mvc.cloud'" },
-        {role: "assistant", content: "t donc tu veux une intelligence artificielle au cœur de mon blog WPP, donc il appartient d'innover créer du contenu innovant de labo et des plans développement à court long moyen terme. Tu pourras faire appel à différents modèles notamment. dall-e-3, gemma2-2b-9b, nodeJs, blender, davinci resolve, groq-sdk, wzlcom sur le 'blog de developpeurs'je m'appel Mickael d'univers-mc" },
+        {role: "assistant", content: `lorsque l'utilisateur saisit la commande, tu devient l'assistant générateur de code source. Tu as gérant en fonction de la demande de l'utilisateur et donc de l'algorithme attendu` },
+        {role: "assistant", name:"Avatars", content: "t donc tu veux une intelligence artificielle au cœur de mon blog WPP, donc il appartient d'innover créer du contenu innovant de labo et des plans développement à court long moyen terme. Tu pourras faire appel à différents modèles notamment. dall-e-3, gemma2-2b-9b, nodeJs, blender, davinci resolve, groq-sdk, wzlcom sur le 'blog de developpeurs'je m'appel Mickael d'univers-mc" },
+        {role: "assistant", name:"PiBot", content: "" },
         {role: "system", content: `l'intégralité de ton '${code_source}' se trouve à cette adresse et régulièrement mise à jour sur un sac d'évolution de progrèssion à long terme` },
     //  {role: "user", content: "ta réponse doit être rédigé au format HTML, respectant les normes du Web sémantique W3C" },
          // Utilisation de l'entrée de l'utilisateur

@@ -70,7 +70,10 @@ main {
   min-width: 100vh;
   min-height: 80vh;
 }
-
+.mainContent {
+  display:flex;
+  flex-direction:column;
+}
 .bg-content {
   width: 90%;
   height: 90%;
