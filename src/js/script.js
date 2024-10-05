@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('src/json/pipeline.json')
+    fetch('src/json/script.json')
         .then(response => response.json())
         .then(cours => {
             const sommaire = document.getElementById('sommaire');
