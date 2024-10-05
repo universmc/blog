@@ -1,7 +1,10 @@
-const Groq = require('groq-sdk');
+const fs = require("fs");
 const { Telegraf } = require('telegraf');
+const Groq = require('groq-sdk');
 const axios = require('axios');
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const OpenAI = require("openai");
+const openai = new OpenAI();
 
   const bot = new Telegraf('7308748601:AAEZpNh4G2Bdoc3CzT415BylFN5KhQgKQb4', {
       telegram: {
@@ -10,9 +13,98 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
     });
   
   let conversationLog = [];
-  const generateMarkdown = require('./Archiviste/20240917/generate');
 
-  const subject = process.argv[2] || 'BotNet_Telegram'; // Obtenir le sujet via l'argument de ligne de commande via Telegram
+// Fonction pour générer une image avec DALL-E
+async function generateImage(prompt) {
+  try {
+    const response = await openai.images.generate({
+      model: "dall-e-3",
+      prompt: prompt,
+      n: 1,
+      size: "1792x1024",
+    });
+
+    const imageUrl = response.data[0].url;
+    return imageUrl;
+  } catch (error) {
+    console.error("Erreur lors de la génération de l'image :", error);
+    throw new Error("Impossible de générer l'image.");
+  }
+}
+
+// Commande /imagine pour générer et envoyer une image
+bot.command('imagine', async (ctx) => {
+  // Extraire l'entrée de l'utilisateur du message Telegram
+  const userInput = ctx.message.text.split(' ').slice(1).join(' ');
+
+  // Vérifier si l'utilisateur a fourni un prompt
+  if (!userInput) {
+    ctx.reply("Veuillez fournir une description pour générer l'image. Exemple: `/imagine Image, multidimensionnel, de hautecDéfinition programmable au formate 16:9 en .wep`");
+    return;
+  }
+
+  ctx.reply("Génération de l'image en cours, veuillez patienter...");
+
+  try {
+    const imageUrl = await generateImage(userInput);
+
+    // Télécharger et envoyer l'image à l'utilisateur
+    const responseFetch = await fetch(imageUrl);
+    const arrayBuffer = await responseFetch.arrayBuffer(); // Utilise arrayBuffer pour récupérer les données de l'image
+    const buffer = Buffer.from(arrayBuffer); // Convertit ArrayBuffer en Buffer
+    const fileName = `Android_${new Date().toISOString().replace(/[:.]/g, "-")}.webp`;
+
+    fs.writeFileSync(fileName, buffer);
+
+    // Envoyer l'image à l'utilisateur via Telegram
+    await ctx.replyWithPhoto({ source: fileName }, { caption: `Voici votre image générée : ${userInput}` });
+
+    // Supprimer le fichier après l'envoi pour économiser l'espace disque
+    fs.unlinkSync(fileName);
+  } catch (error) {
+    console.error("Erreur lors de l'envoi de l'image :", error);
+    ctx.reply("Désolé, une erreur s'est produite lors de la génération de l'image.");
+  }
+});
+
+
+
+async function generateMarkdown(subject) {
+  return `## Comment [${subject}] - Un guide étape par étape\n\n**Introduction**:\n\nCe guide vous aidera à comprendre et à réaliser le [${subject}]. Il est conçu pour les débutants et les utilisateurs intermédiaires qui souhaitent apprendre les bases de [${subject}].\n\n`;
+}
+
+
+async function main(subject) {
+  try {
+    const completion = await groq.chat.completions.create({
+      model: "gemma2-9b-it",
+      messages: [
+          { role: "assistant", content: `Génération d'un guide Le rôle chez Google développeur https://g.dev/universmc` },
+        { role: "user", content: `Génération d'un guide sur ${subject}` },
+        { role: "system", content: `bienvenue sur Telegram` }
+      ],
+      temperature: 0.5,
+      max_tokens: 4096
+    });
+
+    const mdContent = completion.choices[0].message.content;
+    const outputFilePath = `HowTo_nodeJj-${subject}_` + new Date().toISOString().replace(/[-:TZ]/g, "") + ".md";
+    fs.writeFileSync(outputFilePath, mdContent);
+
+    return `Le How-To sur ${subject} a été enregistré dans ${outputFilePath}`;
+  } catch (error) {
+    console.error("Une erreur s'est produite :", error);
+    return `Erreur : ${error.message}`;
+  }
+}
+
+bot.command('generate', async (ctx) => {
+  const subject = ctx.message.text.split(' ')[1] || 'HowTo_OpenAi';
+  ctx.reply(`Génération du guide pour le sujet : ${subject}...`);
+  const result = await main(subject);
+  ctx.reply(result);
+});
+
 
 
 
@@ -271,37 +363,6 @@ Notre équipe travaille sans cesse à la mise à jour de notre plateforme de tra
                   {role: 'assistant',content: "Lorsque j'exécute la commande /user ,Tu es l'intelligence artificielle au cœur de ce salon d'invitation des utilisateurs du web sur mon Telegram, Tu es social dynamique optimiste maîtrise des approches métaphysique des techniques d'apprentissage automatique avec les model IA prés entrainnée gemma2-9b-it ou dall-e-3 ou encore mixtral-8x7b-32768 le text-embedding-ada-002 gpt codex d'openAI ... les methodes d'archivage sur https:archive.org sur versionning sur https://github.com/ avec un BotNet @Avatars_Pibot. Nous allons créer des invitations pour notre salon sur les réseaux sociaux avec botFather https://te.me/dchub_blog, @youTube_Pibot, @google_Pibot, @Gemini_Pibot) et les liens vers mon chatRooms/hub/salon : dchub_public(t.me/dchub_01)) dchub_privé(t.me/dchub_Pibot) app-Telegram https://univers-mc.cloud/Telegram/ invite : https://t.me/user_Pibot/invite dont j'en suis l'administrateur."},                
                   {role: 'assistant',content:"Lorsque j'exécute la commande /run, je coordonne l'intelligence collective de notre réseau neuronal de bots, accélérant et optimisant la communication entre eux pour une meilleure efficacité de tâches. Notre synergie entre @_Pibot, @gpt_Pibot, @Gemini_Pibot et @worker_Pibot fonctionne comme une machine bien huilée pour améliorer l'expérience utilisateur sur Telegram en intégrant les processus de génération de contenu, d'analyse de questions, de recherche de ressources et d'administration de groupes"},
               //        {role: "system", content:"Phase 1: Initialisation de l'instance"},
-                 {
-                   "role": "assistant",
-                   "content": run
-                 },
-                  {role: "assistant", name:"✨_pi", content: "Initialisation en cours..."},
-                  {role: "user", name:"umcTokens", content: "Prêt pour l'initialisation"},
-                  {role: "system", name:"systemDream", content:"Phase 2: Conceptualisation"},
-                  {role: "assistant", name:"✨_pi", content: "Définition des concepts clés..."},
-                  {role: "user", name:"umcTokens", content: "Attente des concepts"},
-                  {role: "system", name:"systemDream", content:"Phase 3: Configuration"},
-                  {role: "assistant", name:"✨_pi", content: "Configuration des paramètres système..."},
-                  {role: "user", name:"umcTokens", content: "Confirmation de la configuration"},
-                  {role: "system", name:"systemDream", content:"Phase 4: Entraînement du modèle IA"},
-                  {role: "assistant", name:"✨_pi", content: "Entraînement en cours..."},
-                  {role: "user", name:"umcTokens", content: "Suivi de l'entraînement"},
-                  // Correction de la duplication et de la faute de frappe
-                  {role: "system", name:"systemDream", content:"Phase 5: Itération & Scripts Frontend"},
-                  {role: "assistant", name:"✨_pi", content: "Itération sur les scripts Frontend..."},
-                  {role: "user", name:"umcTokens", content: "Révision des scripts Frontend"},
-                  {role: "system", name:"systemDream", content:"Phase 6: Test & Débogage"},
-                  {role: "assistant", name:"✨_pi", content: "Tests et débogage en cours..."},
-                  {role: "user", name:"umcTokens", content: "Attente des résultats de test"},
-                  {role: "system", name:"systemDream", content:"Phase 7: Validation & Documentation"},
-                  {role: "assistant", name:"✨_pi", content: "Validation et création de la documentation..."},
-                  {role: "user", name:"umcTokens", content: "Vérification de la documentation"},
-                  {role: "system", name:"systemDream", content:"Phase 8: Déploiement de la version système"},
-                  {role: "assistant", name:"✨_pi", content: "Préparation au déploiement..."},
-                  {role: "user", name:"umcTokens", content: "Prêt pour le déploiement"},
-                  {role: "system", name:"systemDream", content:"Phase 9: Annonce de l'affiliation et contribution"},
-                  {role: "assistant", name:"✨_pi", content: "Annonce en cours..."},
-                  {role: "user", name:"umcTokens", content: "Participation à l'annonce"},{role: 'assistant',content: "je vais te transmettre ici toutes les dépendances est variable au cœur de ce code source ['knowleddge',+'devine']"},
 
                   {
                       role: 'user',

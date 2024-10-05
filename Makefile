@@ -13,6 +13,7 @@ COMMANDE9_MSG="✨ Mise à jour du repertoire sur github✨"
 COMMANDEU_MSG="✨ Mise à jour du repertoire sur github✨"
 COMMANDE10_MSG="✨Exit session✨"
 menuIA_MSG="✨ Menu ✨"
+gen_MSG="✨ Menu ✨"
 howto_MSG="✨howto✨"
 gemini_MSG="✨Test F2✨"
 neoFs_MSG="✨Initialisation du neoFS✨"
@@ -20,7 +21,7 @@ worker_MSG="✨Initialisation du Worker -ia ✨"
 gpt_MSG="✨Initialisation de GPT ✨"
 gpt_MSG="✨Initialisation du studio Avatars ✨"
 meta_MSG="✨Initialisation du Groupe Meta ✨"
-gem_MSG="✨Initialisation du Gem_bot✨"
+genP_MSG="✨Initialisation du Gem_bot✨"
 neoFs_MSG="✨Initialisation du chatbot✨"
 groq_MSG="✨Initialisation de Groq✨"
 blog_MSG="✨Initialisation du Blog ✨"
@@ -37,6 +38,12 @@ commandeR:
 bot:
 	@echo "${bot_MSG}"
 	@./models.sh
+
+
+gen:
+	@echo "${genP_MSG}"
+	@node .setup/GenP.js wirefram_single_Page
+
 
 ia:
 	@echo "${menuIA_MSG}"
