@@ -69,6 +69,8 @@ async function main() {
             role: "assistant",
             content: generateMarkdown(subject), // Utilise la fonction pour générer le Markdown
           },
+          { role: "user", content:` Redis donc un plan de développement ou un guide de développement  pour ${subject}` },
+          { role: "assistant", content: subject },
         ],
         model: "gemma2-9b-it",
         temperature: 0.5,
