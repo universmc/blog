@@ -15,7 +15,6 @@ init:
 News:
 	@echo "Génération du sujet News"
 	@node src/js/generator.js News
-	mv $(BUILD_DIR)/News_wireframe.html $(HTML_DIR)/
 
 .PHONY: intelligence_artificielle
 intelligence_artificielle:
