@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Groq = require("groq-sdk");
+const Groq = require("groq-sdk/index.mjs");
 const groq = new Groq();
 
 const subject = process.argv[2] || 'blog'; // Obtenir le sujet via l'argument de ligne de commande
